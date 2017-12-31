@@ -1,4 +1,5 @@
 #automated-install.py
+#only for debian distros
 import os
 import webbrowser
 if(os.path.exists("/opt/lampp") or os.path.exists("/var/www")):
@@ -6,11 +7,11 @@ if(os.path.exists("/opt/lampp") or os.path.exists("/var/www")):
     choic=raw_input("Wish to continue(y/n)? ")
     if(choic=="y"):
         if(os.path.exists("/opt/lampp")):
-            os.system('sudo cp -r ../FileServer /opt/lampp/htdocs && cd /opt/lampp/ && sudo ./xampp start')
+            os.system('sudo cp -r ../FileServer /opt/lampp/htdocs && cd /opt/lampp/ && sudo ./xampp start && sudo chmmod -R 777 /opt/lampp/htdocs/FileServer')
             print "Files copied.\nNavigating to http://localhost/FilerServer"
             webbrowser.open('http://localhost/FileServer')
         else:
-            os.system('sudo cp -r ../FileServer /var/www/html && sudo service apache2 start')
+            os.system('sudo cp -r ../FileServer /var/www/html && sudo service apache2 start && sudo chmmod -R 777 /var/www/html/FileServer')
             print "Files copied.\nNavigating to http://localhost/FilerServer"
             webbrowser.open('http://localhost/FileServer')
     else:
