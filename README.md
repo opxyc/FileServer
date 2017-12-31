@@ -36,6 +36,12 @@ Open terminal in the folder FileServer (after Cloning or downloading and extract
 
 -----------------------------------------------
 
+ACCESSING DEVELOPER MODE
+
+To the right top, there is a link to get info or server statistics. There, on the host machine, will be a option to switch between normal mode and develper mode.
+
+-----------------------------------------------
+
 Developed by : @RonaldPM
 
 Contribution : @ucatt
