@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['submit'])){
+if(isset($_POST['submit']) && !isset($_POST['loc'])){
     //Get the content of memCap.dat file which contains the maximus strage
     //limit which is set by the admin
     $capFile = fopen("src/set/memCap.dat", "r") or die("Unable to open file!");
@@ -81,5 +81,70 @@ if(isset($_POST['submit'])){
     else{
          echo "Storage limit exceeded! Delete some files or increase the storage limit from dashboard.";
     }
+}
+else if(isset($_POST['submit']) && isset($_POST['loc'])){
+  $capFile = fopen("src/set/memCap.dat", "r") or die("Unable to open file!");
+  $cap = fread($capFile,filesize("src/set/memCap.dat"));
+  fclose($capFile);
+  function folderSize ($dir){
+      $size = 0;
+      foreach (glob(rtrim($dir, '/').'/*', GLOB_NOSORT) as $each) {
+          $size += is_file($each) ? filesize($each) : folderSize($each);
+      }
+      return $size;
+  }
+  $dirSize = (folderSize("uploads/")/1024)/1024/1024;
+  $precision = 2;
+  $dirSize = substr(number_format($dirSize, $precision+1, '.', ''), 0, -1);
+
+  //Get the total file size of files being uploaded (in GB)
+  $uploadSize = 0;
+  if(count($_FILES['upload']['name']) > 0){
+      for($i=0; $i<count($_FILES['upload']['name']); $i++) {
+          $fSize = $_FILES['upload']['size'][$i]/1024/1024/1024;
+          $uploadSize = $uploadSize + $fSize;
+      }
+  }
+  else{
+      echo "Gone here";//header('Location:lis-dir.php?i='.$_POST['loc']);
+  }
+  $totSize = $uploadSize + $dirSize;
+  if($totSize<=$cap){
+      //Upload the files
+      //Get each files
+      $failUpload = 0;
+      for($i=0; $i<count($_FILES['upload']['name']); $i++) {
+          $file_name = $_FILES['upload']['name'][$i];
+          $file_tmp = $_FILES['upload']['tmp_name'][$i];
+          $file_size = $_FILES['upload']['size'][$i];
+          $file_error = $_FILES['upload']['error'][$i];
+          $file_dir = "uploads/projectFolders/".$_POST['loc'];
+          $file_ext = explode('.', $file_name);
+          $file_ext = strtolower(end($file_ext));
+          $file_error = 0;
+              if($file_error === 0) {
+                  $file_destination = $file_dir.'/'.$file_name;
+                  if(move_uploaded_file($file_tmp, $file_destination)) {
+                      continue;
+                  }
+                  else
+                      $failUpload++;
+              }
+      }
+      //Redirect to home page
+      if($failUpload>0){
+          header('Location:lis-dir.php?i='.$_POST['loc'].'&$WARNING===ErrorWhileUploading');
+      }
+      else{
+          header('Location:lis-dir.php?i='.$_POST['loc']);
+      }
+      //header('Location: index.php');
+  }
+  else{
+       echo "Storage limit exceeded! Delete some files or increase the storage limit from dashboard.";
+  }
+}
+else{
+  header("Location:.");
 }
 ?>
