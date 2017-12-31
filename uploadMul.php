@@ -44,6 +44,12 @@ if(isset($_POST['submit']) && !isset($_POST['loc'])){
         for($i=0; $i<count($_FILES['upload']['name']); $i++) {
 
             $file_name = $_FILES['upload']['name'][$i];
+            if($file_name=="index.php")
+              $file_name="index-renamed.php";
+            else if($file_name=="index.html")
+              $file_name="index-renamed.html";
+            else if($file_name=="index.htm")
+              $file_name="index-renamed.htm";
             $file_tmp = $_FILES['upload']['tmp_name'][$i];
             $file_size = $_FILES['upload']['size'][$i];
             $file_error = $_FILES['upload']['error'][$i];
@@ -71,9 +77,9 @@ if(isset($_POST['submit']) && !isset($_POST['loc'])){
         }
         //Redirect to home page
         if($failUpload>0)
-            header('Location: index.php?e=$failUpload');
+            header('Location:.?STATUS=UploadFailed');
         else{
-            header('Location: index.php');
+            header('Location:.?STATUS=Uploaded');
         }
         //header('Location: index.php');
     }
