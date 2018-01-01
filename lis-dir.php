@@ -43,7 +43,7 @@
                     else
                       $loc=$loc.'/'.$dirDepth[$k];
                   }
-                  echo '<a class="inherit"href="l   is-dir.php?i='.$loc.'">'.$dirDepth[$j].'</a>';
+                  echo '<a class="inherit"href="lis-dir.php?i='.$loc.'">'.$dirDepth[$j].'</a>';
                   if($j!=sizeof($dirDepth)-1)
                     echo '&#8674;';
                 }
