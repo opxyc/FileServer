@@ -126,7 +126,7 @@
       </div>
       <div class="deleteOption shadow">
         Software Version : V2.0<br>
-        <a style="line-height:1.6;" href="https://github.com/RonaldPM/FileServer">Check for Updates on GitHub</a>
+        <a style="line-height:1.6;" href="https://github.com/ucatt/FileServer">Check for Updates on GitHub</a>
       </div
     </div>
 		</div>
