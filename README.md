@@ -3,7 +3,7 @@ An open source PHP/HTML Code that can run on a local server which can be used fo
 Once this code is hosted on a local server, users can access it inorder to upload files like photos, videos, music 
 and other types of files into the server.
 
-How to:
+# How to
 
 WINDOWS PC
 1) Download and install XAMPP/WAMPP and then copy these files into the HTDOCS folder. 
@@ -36,12 +36,12 @@ Open terminal in the folder FileServer (after Cloning or downloading and extract
 
 -----------------------------------------------
 
-ACCESSING DEVELOPER MODE
+# ACCESSING DEVELOPER MODE
 
 To the right top, there is a link to get info or server statistics. There, on the host machine, will be a option to switch between normal mode and develper mode.
 
 -----------------------------------------------
 
-Developed by : @RonaldPM
-
-Contribution : @ucatt
+**Developed by**
+* @RonaldPM
+* @ucatt
