@@ -89,6 +89,7 @@
   				}
   				echo "
   					<a style='color:#777;font-size:15px;' href='changelog.html'>View Changelogs</a>
+            <a style='color:#777;font-size:15px;float:right' href='about.html'>About</a>
       </div>";
       if($ip=="127.0.0.1" || $ip=="::1"){
         $capFile = fopen("src/set/developer.dat", "r") or die("Unable to open file!");
@@ -126,8 +127,9 @@
       </div>
       <div class="deleteOption shadow">
         Software Version : V2.0<br>
-        <a style="line-height:1.6;" href="https://github.com/ucatt/FileServer">Check for Updates on GitHub</a>
-      </div
+        <a style="line-height:1.6;" href="https://github.com/RonaldPM/FileServer">Check for Updates on GitHub</a>
+      </div>
+      </div>
     </div>
 		</div>
 	</body>

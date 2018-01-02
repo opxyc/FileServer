@@ -112,7 +112,7 @@ else if(isset($_POST['submit']) && isset($_POST['loc'])){
       }
   }
   else{
-      echo "Gone here";//header('Location:lis-dir.php?i='.$_POST['loc']);
+      header('Location:lis-dir.php?i='.$_POST['loc']);
   }
   $totSize = $uploadSize + $dirSize;
   if($totSize<=$cap){

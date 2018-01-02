@@ -73,7 +73,7 @@
   .textInp{width:100%;}
 }
 @media only screen and (max-width:599px){
-  body{width:100%;font-family:'calibri light',calibri,arial;font-weight:100;margin:0px;background:#fff;overflow-x:hidden;}
+  body{width:100%;font-family:'calibri light',calibri,arial;font-weight:300;margin:0px;background:#fff;overflow-x:hidden;}
   a{color:#4285f4;text-decoration:none;outline:none;cursor:pointer;}
   input{outline:none;}
   .whiteLink{color:#fff;}
