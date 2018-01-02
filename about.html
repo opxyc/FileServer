@@ -56,6 +56,23 @@
             for the program. To grand this, use <br><code>chmod 775 /path/to/file</code>
           </p>
       </div>
+      <div class="matterHolder shadow randm bfE0"><a name="errorDir"></a>
+          <font class="title-in">Problem while creating directories?</font><br>
+          <p style="font-size:16px;line-height:1.3;">
+            This is because you tried to use some special characters like /,|,\,.,&,+ while creating a directory. Try avoiding
+            them. It will work for sure.
+          </p>
+      </div>
+      <div class="matterHolder shadow randm">
+          <font class="title-in">Files not getting uploaded?</font><br>
+          <p style="font-size:16px;line-height:1.3;">
+            Two possible reasons..<Br><br>
+            First :The upload size set in stat.php has crossed. Try increasing the allowed space for
+            uploaded files from <a href="stat.php">here</a>.<br><br>
+            Second : The maximum POST size is set with a lower value. This can be edited from server configutation from the file php.ini.
+            Increase the values of post_max_size and upload_max_filesize to a higher value. Then restart the server and try again.
+          </p>
+      </div>
     </div>
   </div>
 </body>

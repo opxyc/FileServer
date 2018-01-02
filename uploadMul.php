@@ -28,7 +28,7 @@ if(isset($_POST['submit']) && !isset($_POST['loc'])){
     }
     else{
         //Redirect to home page
-        header('Location: index.php');
+        header('Location:.');
     }
 
     //Add current folder size and the size of the file being uploaded
@@ -42,7 +42,6 @@ if(isset($_POST['submit']) && !isset($_POST['loc'])){
         //Get each files
         $failUpload = 0;
         for($i=0; $i<count($_FILES['upload']['name']); $i++) {
-
             $file_name = $_FILES['upload']['name'][$i];
             if($file_name=="index.php")
               $file_name="index-renamed.php";
@@ -77,11 +76,10 @@ if(isset($_POST['submit']) && !isset($_POST['loc'])){
         }
         //Redirect to home page
         if($failUpload>0)
-            header('Location:.?STATUS=UploadFailed');
+          header('Location:.?STATUS=UploadFailed');
         else{
             header('Location:.?STATUS=Uploaded');
         }
-        //header('Location: index.php');
     }
     //Storage cap exceeded. Error message is shown
     else{
@@ -89,6 +87,7 @@ if(isset($_POST['submit']) && !isset($_POST['loc'])){
     }
 }
 else if(isset($_POST['submit']) && isset($_POST['loc'])){
+  echo "second if<br>";
   $capFile = fopen("src/set/memCap.dat", "r") or die("Unable to open file!");
   $cap = fread($capFile,filesize("src/set/memCap.dat"));
   fclose($capFile);
@@ -151,6 +150,6 @@ else if(isset($_POST['submit']) && isset($_POST['loc'])){
   }
 }
 else{
-  header("Location:.");
+  header("Location:.?Error:-- limit exceeded : edit upload_max_size in php.ini");
 }
 ?>
